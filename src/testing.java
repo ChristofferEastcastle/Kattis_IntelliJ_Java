@@ -7,5 +7,6 @@ public class testing {
         int integ = sc.nextInt();
         System.out.printf("Your number: %d%n", integ);
 
+        System.out.println("Helloooo");
     }
 }
