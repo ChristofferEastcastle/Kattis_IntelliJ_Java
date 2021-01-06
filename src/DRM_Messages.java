@@ -33,12 +33,11 @@ public class DRM_Messages {
         }
         for (int i = 0; i < first.size(); i++) {
             int c = first.get(i) + (second.get(i) % 65);
-            if (c > 90 * 2)
-                c = c % 65 + 65;
+            if (c == 90 + 'Z')
+                c--;
             while (c > 90)
                 c -= 26;
             System.out.print((char) c);
-
         }
     }
 }
