@@ -13,17 +13,17 @@ public class T9_Spelling {
             System.out.printf("Case #%d: ", i);
             String number = "0";
             char last = number.toCharArray()[0];
-            char first = number.toCharArray()[0];
+            char first;
             for(char c : str){
                 if (c != ' ') {
                     number = getIntRep(c, map);
                     first = number.toCharArray()[0];
                     if (last == first)
                         System.out.print(" ");
-
                 }else {
                     number = "0";
-
+                    if (last == '0')
+                        System.out.print(" ");
                 }
                 System.out.printf("%s", number);
                 last = number.toCharArray()[number.toCharArray().length - 1];
