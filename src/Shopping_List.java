@@ -8,11 +8,15 @@ public class Shopping_List {
         sc.nextLine();
         for (int i = 0; i < n; i++) {
             String[] arr = sc.nextLine().split(" ");
+            HashSet<String> set = new HashSet<>();
             for (String str : arr){
+                if (set.contains(str))
+                    continue;
                 if (map.containsKey(str))
                     map.replace(str, map.get(str) + 1);
                 else
                     map.put(str, 1);
+                set.add(str);
             }
         }
         ArrayList<String> list = new ArrayList<>();
