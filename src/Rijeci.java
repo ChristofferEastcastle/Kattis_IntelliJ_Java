@@ -18,13 +18,18 @@ public class Rijeci {
 
             }
             else if (current.equals("B")){
-                b++;
                 mainString.replaceAll("B", "BA");
                 current = "A";
-                a++; b++;
             }
-
         }
-        System.out.printf("%d %d", a, b);
+        char[] arr = mainString.toCharArray();
+        for (char c : arr){
+            if (c == 'a')
+                a++;
+            else
+                b++;
+        }
+        System.out.println(a);
+        System.out.println(b);
     }
 }

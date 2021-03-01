@@ -33,7 +33,7 @@ public class Birthday_Memorization {
         for (String name : names)
             System.out.println(name);
     }
-    /*
+
     private static void printMap(HashMap<LocalDate, ArrayList<Person>> map) {
         for (Map.Entry<LocalDate, ArrayList<Person>> entry : map.entrySet()){
             System.out.print(entry.getKey().format(DateTimeFormatter.ofPattern("dd/MM")));
@@ -42,7 +42,6 @@ public class Birthday_Memorization {
             System.out.println();
         }
     }
-    */
 }
 class Person{
     String name;
