@@ -6,6 +6,7 @@ public class Luhns_Checksum_Algorithm {
         int n = Integer.parseInt(sc.nextLine());
         for (int i = 0; i < n; i++) {
             String[] arr = sc.nextLine().split("");
+            StringBuilder str = new StringBuilder();
             int counter = 1;
             for (int j = arr.length - 1; j >= 0; j--){
                 if (counter % 2 == 0) {
@@ -17,10 +18,8 @@ public class Luhns_Checksum_Algorithm {
                     arr[j] = doubled.toString();
                 }
                 counter++;
+                str.append(arr[j]);
             }
-            StringBuilder str = new StringBuilder();
-            for (String s : arr)
-                str.append(s);
 
             if (SumOfDigits(str.toString()) % 10 == 0)
                 System.out.println("PASS");
