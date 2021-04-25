@@ -2,34 +2,46 @@ import java.util.*;
 
 public class Kleptography {
     public static void main(String[] args) {
-        char[] arr = "abcdefghijklmnopqrstuvwxyz".toCharArray();
         Scanner sc = new Scanner(System.in);
-        ArrayList<Character> alphabet = new ArrayList<>();
-        for (char c : arr)
-            alphabet.add(c);
         int n = sc.nextInt();
         int m = sc.nextInt();
         sc.nextLine();
         char[] last_n_plain = sc.nextLine().toCharArray();
-
         char[] b = sc.nextLine().toCharArray();
-        ArrayList<Character> last = new ArrayList<>();
+
+        ArrayList<Character> plainText = new ArrayList<>();
         ArrayList<Character> cipherText = new ArrayList<>();
         for (int i = 0; i < b.length; i++) {
             if (i <= last_n_plain.length - 1)
-                last.add(last_n_plain[i]);
+                plainText.add(last_n_plain[i]);
             cipherText.add(b[i]);
         }
-        Collections.reverse(last);
+        Collections.reverse(plainText);
         Collections.reverse(cipherText);
         ArrayList<Character> key_list = new ArrayList<>();
 
-        char[] key = new char[b.length];
         for (int i = 0; i < n; i++){
-            key_list.add((char) (cipherText.get(i) - last.get(i) % 97));
+            char c = (char) (cipherText.get(i) - plainText.get(i) % 97);
+            c = checkIfInRange(c);
+            key_list.add(c);
         }
-        System.out.println(last);
-        System.out.println(cipherText);
-        System.out.println(key_list);
+        for (int i = n; i < m - 1; i++){
+            char c = (char) (cipherText.get(i) - key_list.get(i - n) % 97);
+            c = checkIfInRange(c);
+            key_list.add(c);
+        }
+        plainText.addAll(key_list);
+
+        for (int i = m - 1; i >= 0; i--) {
+            System.out.print(plainText.get(i));
+        }
+    }
+
+    private static char checkIfInRange(char c) {
+        if (c < 97)
+            c += 26;
+        if (c > 122)
+            c -= 26;
+        return c;
     }
 }
